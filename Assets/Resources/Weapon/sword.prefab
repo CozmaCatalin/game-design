@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4000011191723762}
   - component: {fileID: 33000011591730632}
   - component: {fileID: 23000011493205480}
+  - component: {fileID: -5651045608761680872}
   m_Layer: 0
-  m_Name: RB_Falchion
+  m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,3 +80,15 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &-5651045608761680872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011335475624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2164d51ead14b4d2889ecb3a22c3ed0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
