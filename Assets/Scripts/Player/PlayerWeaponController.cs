@@ -6,6 +6,7 @@ public class PlayerWeaponController : MonoBehaviour
 {
     public GameObject playerHand;
     public GameObject EquippedWeapon;
+    public Transform swordPivot;
 
     PlayerStat playerStat;
     IWeapon equippedWeapon;
@@ -23,7 +24,9 @@ public class PlayerWeaponController : MonoBehaviour
             Destroy(playerHand.transform.GetChild(0).gameObject);
         }
         EquippedWeapon = Instantiate(Resources.Load<GameObject>("Weapon/"+itemToEquip.ObjectSlug),
-            playerHand.transform.position,playerHand.transform.rotation);
+            playerHand.transform.position,
+            swordPivot.rotation
+         );
         equippedWeapon = EquippedWeapon.GetComponent<IWeapon>();
         equippedWeapon.Stats = itemToEquip.Stats;
         EquippedWeapon.transform.SetParent(playerHand.transform);
