@@ -29,17 +29,27 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-        //playerRigidBody.velocity = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, playerRigidBody.velocity.y, Input.GetAxis("Vertical")*moveSpeed);
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    playerRigidBody.velocity = new Vector3(playerRigidBody.velocity.x, jumpForce, playerRigidBody.velocity.z);
-        //}
 
-        // moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            animator.SetTrigger("Attack");
+            h = 0;
+            v = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            animator.SetTrigger("Active");
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            animator.SetTrigger("Passive");
+        }
+
         float yStore = moveDirection.y;
         moveDirection = (transform.forward * Input.GetAxis("Vertical")) + (transform.right * Input.GetAxis("Horizontal"));
         moveDirection = moveDirection.normalized * moveSpeed;
         moveDirection.y = yStore;
+
         if (playerController.isGrounded)
         {
             moveDirection.y = 0;
@@ -52,19 +62,6 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y = moveDirection.y + (Physics.gravity.y * gravityScale);
         playerController.Move(moveDirection * Time.deltaTime);
-
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            animator.SetTrigger("Attack");
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            animator.SetTrigger("Active");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            animator.SetTrigger("Passive");
-        }
 
         // Move the plater in different directions based on camera look direction
         if (h != 0  || v != 0)
