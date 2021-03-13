@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStat : MonoBehaviour
 {
     public List<BaseStat> stats = new List<BaseStat>();
+    public int health = 20;
     void Start()
     {
         stats.Add(new BaseStat(4, "Power", "Your power level"));
