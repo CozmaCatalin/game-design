@@ -4,31 +4,27 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    public Item sword;
-    public Item greatSword;
+    public List<Item> swords;
     public PlayerWeaponController playerWeaponController;
 
     void Start()
     {
         playerWeaponController.GetComponent<PlayerWeaponController>();
-        List<BaseStat> swordStats = new List<BaseStat>();
-        swordStats.Add(new BaseStat(6,"Power","Your power level"));
-        sword = new Item(swordStats, "sword");
-
-        List<BaseStat> greatSwordStat = new List<BaseStat>();
-        greatSwordStat.Add(new BaseStat(6, "Power", "Your power level"));
-        greatSword = new Item(greatSwordStat, "RB_Rapier");
+        swords = new List<Item>();
+        for(int i = 1; i <=4; i++)
+        {
+            List<BaseStat> swordStats = new List<BaseStat>
+            {
+                new BaseStat(5 * i, "Power", "Power of the sword")
+            };
+            Item sword = new Item(swordStats, "sword" + i);
+            swords.Add(sword);
+        }
     }
 
-    void Update()
+    public void EquipWeapon(int Level)
     {
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            playerWeaponController.EquipWeapon(sword);
-        }
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            playerWeaponController.EquipWeapon(greatSword);
-        }
+        Debug.Log("NEW LEVEL!");
+        playerWeaponController.EquipWeapon(swords[Level-1]);
     }
 }

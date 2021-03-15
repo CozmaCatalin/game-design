@@ -36,14 +36,10 @@ public class PlayerWeaponController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) && equippedWeapon != null)
-        {
-            PerformWeaponAttack();
-        }
+       // if (Input.GetKeyDown(KeyCode.Mouse0) && equippedWeapon != null)
+      //  {
+      //      PerformWeaponAttack();
+     //   }
     }
 
-    public void PerformWeaponAttack()
-    {
-        equippedWeapon.PerformAttack();
-    }
 }

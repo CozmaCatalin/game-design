@@ -1,17 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Levels : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int maxLevels = 8;
-    public int currentLevel;
-    public int enemyesLeft;
+    public GameObject EnemyToSpawn;
+    private int maxLevels = 4;
+    public int currentLevel = 0;
+    public int enemyesLeft = 0;
+    public int enemyesToSpawn = 0;
+    public Text levelText;
+    public InventoryController inventoryController;
+
     void Start()
     {
-        currentLevel = 1;
-        enemyesLeft = 2;
+        NextLevel();
     }
 
     public void EnemyKilled()
@@ -25,12 +30,29 @@ public class Levels : MonoBehaviour
 
     public void NextLevel()
     {
-        currentLevel += 1;
-        enemyesLeft = currentLevel * 10;
+        if(currentLevel != maxLevels)
+        {
+            currentLevel += 1;
+            levelText.text = "Level " + currentLevel;
+            enemyesLeft = currentLevel * 5;
+            enemyesToSpawn = currentLevel * 5;
+            inventoryController.EquipWeapon(currentLevel);
+            StartCoroutine(EnemyDrop());
+        }
+    }
+
+    private IEnumerator EnemyDrop()
+    {
+        while(enemyesToSpawn > 0)
+        {
+            int xPos = Random.Range(20, 40);
+            int zPos = Random.Range(25, 50);
+            Instantiate(EnemyToSpawn, new Vector3(xPos, 5, zPos), Quaternion.identity);
+            yield return new WaitForSeconds(0.3f);
+            enemyesToSpawn -= 1;
+
+        }
     }
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
+ 
 }

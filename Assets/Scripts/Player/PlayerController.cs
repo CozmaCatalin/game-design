@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             animator.SetTrigger("Attack");
             h = 0;
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Active");
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             animator.SetTrigger("Passive");
         }
