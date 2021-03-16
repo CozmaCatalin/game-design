@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
     //
     public GameObject projectile;
+    //
+    //
+    public float currentHealth, power, toughness;
+    public float maxHealth = 20;
+    public int hitValue = 5;
+    public Text scoreText;
+    public GameObject gamePlay;
     //
     public NavMeshAgent agent;
     public Transform player;
@@ -29,6 +37,7 @@ public class EnemyController : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -79,9 +88,9 @@ public class EnemyController : MonoBehaviour
         {
 
             // ATTACK CODE HERE
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+            //Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            //rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            //rb.AddForce(transform.up * 8f, ForceMode.Impulse);
             ///
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
@@ -100,4 +109,30 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
+
+     void OnTriggerEnter(Collider col)
+    {
+        if (col.CompareTag("Player"))
+        {
+            col.GetComponent<PlayerStat>().health -= hitValue;
+            Debug.Log("Enemy take " + hitValue + " damage");
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHealth -= amount;
+        if(currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        gamePlay.GetComponent<Levels>().EnemyKilled();
+        scoreText.text = "Enemyes left to kill " + gamePlay.GetComponent<Levels>().enemyesLeft;
+        Destroy(gameObject);
+    }
+
 }

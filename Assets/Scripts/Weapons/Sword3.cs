@@ -10,7 +10,7 @@ public class Sword3 : MonoBehaviour, IWeapon
     {
         if (col.CompareTag("Enemy"))
         {
-            col.GetComponent<IEnemy>().TakeDamage(Stats[0].GetCalculatedStatValue());
+            col.GetComponent<EnemyController>().TakeDamage(Stats[0].GetCalculatedStatValue());
             Debug.Log("sword3 " + Stats[0].GetCalculatedStatValue() + " damage from enemy");
         }
     }
