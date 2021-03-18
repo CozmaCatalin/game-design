@@ -10,6 +10,7 @@ public class Levels : MonoBehaviour
     private int maxLevels = 4;
     public int currentLevel = 0;
     public int enemyesLeft = 0;
+    public int multiplyValueEnemies = 10;
     public int enemyesToSpawn = 0;
     public Text levelText;
     public InventoryController inventoryController;
@@ -34,8 +35,8 @@ public class Levels : MonoBehaviour
         {
             currentLevel += 1;
             levelText.text = "Level " + currentLevel;
-            enemyesLeft = currentLevel * 5;
-            enemyesToSpawn = currentLevel * 5;
+            enemyesLeft = currentLevel * multiplyValueEnemies;
+            enemyesToSpawn = currentLevel * multiplyValueEnemies;
             inventoryController.EquipWeapon(currentLevel);
             StartCoroutine(EnemyDrop());
         }

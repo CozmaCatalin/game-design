@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
  
     public Animator animator;
     public Transform pivot;
+    public ParticleSystem shockWave;
 
     //public Rigidbody playerRigidBody;
     public CharacterController playerController;
@@ -39,6 +40,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             animator.SetTrigger("Active");
+            shockWave.Play();
+
         }
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
