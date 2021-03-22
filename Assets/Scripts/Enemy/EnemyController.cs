@@ -19,7 +19,6 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
     public Transform player;
     public LayerMask whatIsGround, whatIsPlayer;
-    public Animator animator;
 
     // Patroling
     public Vector3 walkPoint;
@@ -76,13 +75,12 @@ public class EnemyController : MonoBehaviour
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        animator.SetBool("isMoving", true);
     }
 
     private void AttackPlayer()
     {
         agent.SetDestination(transform.position);
-        transform.LookAt(player);
+        //transform.LookAt(player);
 
         if (!alreadyAttacked)
         {
