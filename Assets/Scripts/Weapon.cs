@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapon : MonoBehaviour {
 
@@ -11,9 +12,11 @@ public class Weapon : MonoBehaviour {
     public Transform shotPoint;
     public Animator camAnim;
     private SpriteRenderer weaponSprite;
+    public Slider coolDown;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
+    public float coolDownTake;
 
     private void Start()
     {
@@ -39,10 +42,17 @@ public class Weapon : MonoBehaviour {
         {
             if (Input.GetMouseButton(0))
             {
-                Instantiate(shotEffect, shotPoint.position, Quaternion.identity);
-                camAnim.SetTrigger("shake");
-                Instantiate(projectile, shotPoint.position, transform.rotation);
-                timeBtwShots = startTimeBtwShots;
+                if(coolDown.GetComponent<CoolDownBar>().isCooling == false){
+                    coolDown.value -= coolDownTake;
+                    Instantiate(shotEffect, shotPoint.position, Quaternion.identity);
+                    camAnim.SetTrigger("shake");
+                    Instantiate(projectile, shotPoint.position, transform.rotation);
+                    timeBtwShots = startTimeBtwShots;
+                } else
+                {
+                    Debug.Log("Weapon is cooling!");
+                }
+                
             }
         }
         else {
