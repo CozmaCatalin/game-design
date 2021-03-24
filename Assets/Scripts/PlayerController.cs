@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public GameObject deathEffect;
     public GameObject explosion;
     public Slider playerHealth;
+    public int currentCoins;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
@@ -114,5 +116,10 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public void AddOrRemoveCoins(int amount)
+    {
+        currentCoins += amount;
     }
 }
