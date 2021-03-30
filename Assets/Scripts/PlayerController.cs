@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject[] hearts;
     public int heartsNumber;
+    public Text score;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -30,11 +31,13 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
     public Slider playerHealth;
     public int currentCoins;
+    public AudioSource coinCollect;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        coinCollect = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -120,6 +123,16 @@ public class PlayerController : MonoBehaviour
 
     public void AddOrRemoveCoins(int amount)
     {
-        currentCoins += amount;
+        score.text = (int.Parse(score.text) + amount).ToString();
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Coin"))
+        {
+            AddOrRemoveCoins(collision.gameObject.GetComponent<Coin>().value);
+            Destroy(collision.gameObject);
+            coinCollect.Play();
+        }
     }
 }

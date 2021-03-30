@@ -8,12 +8,14 @@ public class Enemy : MonoBehaviour,IEnemy {
     public int health;
     public GameObject deathEffect;
     public GameObject explosion;
+    public GameObject coin;
     public float speed = 5;
 
     private void Update()
     {
         if (health <= 0) {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
