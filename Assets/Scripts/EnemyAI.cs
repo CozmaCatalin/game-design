@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     public float nearDistance;
     public float startTimeBtwShots;
     private float timeBtwShots;
+    public float waitTimeToAttack;
 
     public GameObject shot;
     public Transform player;
@@ -18,30 +19,36 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        nearDistance = Random.Range(20, 25);
+        stoppingDistance = Random.Range(15, 25);
+        startTimeBtwShots = Random.Range(5, 10);
+        speed = Random.Range(5, 10);
+        waitTimeToAttack = Random.Range(4, 6);
     }
 
     // Update is called once per frame
     void Update()
     {
+        waitTimeToAttack -= Time.deltaTime;
         if(player != null)
         {
-            if (Vector2.Distance(transform.position, player.position) < nearDistance)
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            if (Mathf.Abs(distanceToPlayer - stoppingDistance) <= 1f || Mathf.Abs(distanceToPlayer - nearDistance) <= 1f)
             {
-                //Debug.Log("[1]" + Vector2.Distance(transform.position, player.position));
-                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
+                //Debug.Log("[1]");
             }
-            else if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            else if (distanceToPlayer > stoppingDistance)
             {
-                //Debug.Log("[2]" + Vector2.Distance(transform.position, player.position));
+                //Debug.Log("[2]");
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }
-            else if (Vector2.Distance(transform.position, player.position) - stoppingDistance <= 1f && Vector2.Distance(transform.position, player.position) - nearDistance <= 1f)
+            else if (distanceToPlayer < nearDistance)
             {
-                //Debug.Log("[3]" + Vector2.Distance(transform.position, player.position));
-                transform.position = this.transform.position;
+                //Debug.Log("[3]");
+                transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
             }
 
-            if (timeBtwShots < 0)
+            if (timeBtwShots < 0 && waitTimeToAttack < 0)
             {
                 Instantiate(shot, transform.position, Quaternion.identity);
                 timeBtwShots = startTimeBtwShots;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour,IEnemy {
 
-    public Animator camAnim;
+    //public Animator camAnim;
     public int health;
     public GameObject deathEffect;
     public GameObject explosion;
@@ -17,12 +17,13 @@ public class Enemy : MonoBehaviour,IEnemy {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Instantiate(coin, transform.position, Quaternion.identity);
             Destroy(gameObject);
+            GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().currentMonsters -= 1;
         }
     }
 
     public void TakeDamage(int damage) {
-        camAnim.SetTrigger("shake");
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        //camAnim.SetTrigger("shake");
+        //Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
     }
 }
