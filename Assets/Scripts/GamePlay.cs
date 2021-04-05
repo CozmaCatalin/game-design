@@ -8,6 +8,8 @@ public class GamePlay : MonoBehaviour
     // Start is called before the first frame update
     public Transform[] spawnPositions;
     public GameObject[] enemyPrefabs;
+    public Transform bossSpawn;
+    public GameObject boss;
     public Animator waveAnimator;
     public Text waveNumber;
     public bool isSpawning;
@@ -15,6 +17,7 @@ public class GamePlay : MonoBehaviour
     public int maxWaves;
     public int monsterToSpawnPerWave = 10;
     public int currentMonsters;
+    public bool bossSpawned;
 
 
     void Start()
@@ -22,6 +25,7 @@ public class GamePlay : MonoBehaviour
         currentMonsters = 0;
         wave = 0;
         maxWaves = 3;
+        bossSpawned = false;
     }
 
     // Update is called once per frame
@@ -34,13 +38,18 @@ public class GamePlay : MonoBehaviour
     {
         if (currentMonsters == 0 && wave < maxWaves)
         {
-            Debug.Log("Wave " + wave);
             waveAnimator.SetTrigger("fadeIn");
             wave += 1;
             waveNumber.text = "Wave " + wave;
             monsterToSpawnPerWave = Random.Range(5, 10) * wave;
+            //monsterToSpawnPerWave =1 * wave;
             //StartCoroutine(SpawnMonsters());
             SpawnMonsters();
+        }
+        if(currentMonsters == 0 && wave == maxWaves && bossSpawned == false)
+        {
+            bossSpawned = true;
+            Instantiate(boss, bossSpawn.position, transform.rotation);
         }
     }
 

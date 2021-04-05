@@ -10,7 +10,6 @@ public class Boss : MonoBehaviour,IEnemy {
     private float timeBtwDamage = 1.5f;
 
 
-    public Animator camAnim;
     public Slider healthBar;
     private Animator anim;
     public bool isDead;
@@ -19,6 +18,8 @@ public class Boss : MonoBehaviour,IEnemy {
 
     private void Start()
     {
+        healthBar = GameObject.FindGameObjectWithTag("BossHealth").GetComponent<Slider>();
+        healthBar.GetComponent<Animator>().SetTrigger("slideLeft");
         anim = GetComponent<Animator>();
     }
 
@@ -46,7 +47,6 @@ public class Boss : MonoBehaviour,IEnemy {
         // deal the player damage ! 
         if (other.CompareTag("Player") && isDead == false) {
             if (timeBtwDamage <= 0) {
-                camAnim.SetTrigger("shake");
                 other.GetComponent<PlayerController>().TakeDamage(damage);
             }
         } 
@@ -55,7 +55,6 @@ public class Boss : MonoBehaviour,IEnemy {
 
     public void TakeDamage(int damage)
     {
-        camAnim.SetTrigger("shake");
         Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
     }

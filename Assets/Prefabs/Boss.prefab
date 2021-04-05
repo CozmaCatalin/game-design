@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841397720413052}
   - component: {fileID: 911841397720413055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841397850691663}
   - component: {fileID: 911841397850691662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841398022046878}
   - component: {fileID: 911841398022046873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841398434025751}
   - component: {fileID: 911841398434025750}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841398763794048}
   - component: {fileID: 911841398763794051}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 911841398868287205}
   - component: {fileID: 911841398868287210}
   - component: {fileID: 911841398868287211}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Boss
   m_TagString: Boss
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ Transform:
   m_GameObject: {fileID: 911841398868287206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.62, y: -2.9, z: 0.046496}
-  m_LocalScale: {x: 1.3564911, y: 1.356491, z: 1.356491}
+  m_LocalScale: {x: 2, y: 2, z: 1.356491}
   m_Children:
   - {fileID: 911841397720413052}
   - {fileID: 911841397850691663}
@@ -479,9 +479,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   damage: 5
-  camAnim: {fileID: 0}
   healthBar: {fileID: 0}
   isDead: 0
+  explosion: {fileID: 1214371818292734, guid: 4d0e5f54256a59949aec59514c116c3b, type: 3}
 --- !u!58 &911841398868287210
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841399196547878}
   - component: {fileID: 911841399196547873}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -610,7 +610,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911841399574666032}
   - component: {fileID: 911841399574666035}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Leg left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
