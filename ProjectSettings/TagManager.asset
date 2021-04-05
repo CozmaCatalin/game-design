@@ -10,6 +10,7 @@ TagManager:
   - Canvas
   - GamePlay
   - BossHealth
+  - CoolDownWeapon
   layers:
   - Default
   - TransparentFX

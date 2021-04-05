@@ -21,6 +21,8 @@ public class Weapon : MonoBehaviour {
     private void Start()
     {
         weaponSprite = GetComponent<SpriteRenderer>();
+        coolDown = GameObject.FindGameObjectWithTag("CoolDownWeapon").GetComponent<Slider>();
+        camAnim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
     }
 
     private void Update()
