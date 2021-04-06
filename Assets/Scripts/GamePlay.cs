@@ -24,7 +24,7 @@ public class GamePlay : MonoBehaviour
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 3;
+        maxWaves = 1;
         bossSpawned = false;
     }
 
@@ -41,8 +41,8 @@ public class GamePlay : MonoBehaviour
             waveAnimator.SetTrigger("fadeIn");
             wave += 1;
             waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(5, 10) * wave;
-            //monsterToSpawnPerWave =1 * wave;
+            //monsterToSpawnPerWave = Random.Range(5, 10) * wave;
+            monsterToSpawnPerWave = 1 * wave;
             //StartCoroutine(SpawnMonsters());
             SpawnMonsters();
         }

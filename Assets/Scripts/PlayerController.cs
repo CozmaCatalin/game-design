@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             Instantiate(weapon, weaponPos.transform.position, transform.rotation,weaponPos.transform);
         }

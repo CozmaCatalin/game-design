@@ -797,7 +797,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 150
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2982,7 +2982,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1419306235}
   currentCoins: 0
   coinCollect: {fileID: 0}
-  weapon: {fileID: 432157975980956181, guid: e5f9627a0f9f045b3b5bf0c5a0e491a5, type: 3}
+  weapon: {fileID: 5807644142534343903, guid: f08ff6717f3e147bc9d6c89adac2dddf, type: 3}
   weaponPos: {fileID: 1506749031}
 --- !u!50 &1334417013
 Rigidbody2D:
@@ -3209,7 +3209,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
