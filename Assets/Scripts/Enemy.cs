@@ -10,13 +10,26 @@ public class Enemy : MonoBehaviour,IEnemy {
     public GameObject explosion;
     public GameObject coin;
     public float speed = 5;
+    public Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Update()
     {
         if (health <= 0) {
             Instantiate(deathEffect, transform.position, Quaternion.identity);
             Instantiate(coin, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            if(animator != null)
+            {
+                Destroy(gameObject);
+            } else {
+                Instantiate(deathEffect, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+
             GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().currentMonsters -= 1;
         }
     }

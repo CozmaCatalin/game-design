@@ -11,6 +11,7 @@ public class GamePlay : MonoBehaviour
     public Transform bossSpawn;
     public GameObject boss;
     public Animator waveAnimator;
+    private PlayerController player;
     public Text waveNumber;
     public bool isSpawning;
     public int wave = 0;
@@ -18,14 +19,16 @@ public class GamePlay : MonoBehaviour
     public int monsterToSpawnPerWave = 10;
     public int currentMonsters;
     public bool bossSpawned;
+    public bool losed = false;
 
 
     void Start()
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 1;
+        maxWaves = 3;
         bossSpawned = false;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -41,8 +44,8 @@ public class GamePlay : MonoBehaviour
             waveAnimator.SetTrigger("fadeIn");
             wave += 1;
             waveNumber.text = "Wave " + wave;
-            //monsterToSpawnPerWave = Random.Range(5, 10) * wave;
-            monsterToSpawnPerWave = 1 * wave;
+            monsterToSpawnPerWave = Random.Range(5, 10) * wave;
+            //monsterToSpawnPerWave = 1 * wave;
             //StartCoroutine(SpawnMonsters());
             SpawnMonsters();
         }
@@ -50,6 +53,14 @@ public class GamePlay : MonoBehaviour
         {
             bossSpawned = true;
             Instantiate(boss, bossSpawn.position, transform.rotation);
+        }
+
+        if(player.health <= 0 && player.heartsNumber <= 0 && losed == false)
+        {
+            waveNumber.color = Color.red;
+            waveNumber.text = "You lose!";
+            waveAnimator.SetTrigger("fadeIn");
+            losed = true;
         }
     }
 
@@ -72,9 +83,15 @@ public class GamePlay : MonoBehaviour
         while (monsterToSpawnPerWave > 0)
         {
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
-            int randSpawnPoint = Random.Range(0, spawnPositions.Length);
-
-            Instantiate(enemyPrefabs[0], spawnPositions[randSpawnPoint].position, transform.rotation);
+            int randSpawnPoint = 0 ;
+            if(randEnemy == 1)
+            {
+                randSpawnPoint = Random.Range(0,2);
+            } else
+            {
+                randSpawnPoint = Random.Range(2, spawnPositions.Length);
+            }
+            Instantiate(enemyPrefabs[randEnemy], spawnPositions[randSpawnPoint].position, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;
         }

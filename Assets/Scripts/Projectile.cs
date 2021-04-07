@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Projectile : MonoBehaviour {
     public float distance;
     public int damage;
     public LayerMask whatIsSolid;
+    public string tagFinded;
 
     public GameObject destroyEffect;
 
@@ -21,10 +23,14 @@ public class Projectile : MonoBehaviour {
     {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null) {
+            tagFinded = hitInfo.collider.tag;
             if (hitInfo.collider.CompareTag("Enemy") || hitInfo.collider.CompareTag("Boss")) {
                 hitInfo.collider.GetComponent<IEnemy>().TakeDamage(damage);
             }
             DestroyProjectile();
+        } else
+        {
+            tagFinded = null;
         }
 
 
@@ -32,7 +38,10 @@ public class Projectile : MonoBehaviour {
     }
 
     void DestroyProjectile() {
-        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        if(tagFinded != "Enemy" && tagFinded != "Boss")
+        {
+            Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }

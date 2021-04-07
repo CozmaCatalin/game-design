@@ -26,7 +26,6 @@ public class BossProjectile : MonoBehaviour
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null)
         {
-            Debug.Log("Boss projectile hitted " + hitInfo.collider.tag);
             if (hitInfo.collider.CompareTag("Player"))
             {
                 hitInfo.collider.GetComponent<PlayerController>().TakeDamage(damage);

@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour,IEnemy {
     public bool isDead;
     public GameObject explosion;
     public GameObject projectile;
+    public float waitForSpecialAttack1;
 
     public bool isMakinSpecialAttack1 = false;
 
@@ -26,17 +27,19 @@ public class Boss : MonoBehaviour,IEnemy {
         anim = GetComponent<Animator>();
         health = 150;
         damage = 10;
+        waitForSpecialAttack1 = 5f;
     }
 
     private void Update()
     {
-        if (!isMakinSpecialAttack1)
+        if (!isMakinSpecialAttack1 && health > 0)
         {
             StartCoroutine(SpecialAttack());
         }
 
         if (health <= 75) {
             anim.SetTrigger("stageTwo");
+            waitForSpecialAttack1 = 2f;
             damage = 20;
 
         }
@@ -67,20 +70,24 @@ public class Boss : MonoBehaviour,IEnemy {
     IEnumerator SpecialAttack()
     {
         isMakinSpecialAttack1 = true;
-        yield return new WaitForSeconds(5f);
-        for(int i = 0; i < 18; i++)
+        yield return new WaitForSeconds(waitForSpecialAttack1);
+        if(health > 0)
         {
-            GameObject instantiatedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
-            instantiatedProjectile.GetComponent<BossProjectile>().goingDirection = i * 20;
+            for (int i = 0; i < 18; i++)
+            {
+                GameObject instantiatedProjectile = Instantiate(projectile, transform.position, Quaternion.identity);
+                instantiatedProjectile.GetComponent<BossProjectile>().goingDirection = i * 20;
+            }
         }
+        //Debug.Log("Special attack maded!");
         isMakinSpecialAttack1 = false;
-        Debug.Log("Special attack maded!");
+
     }
 
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("Taking " + damage + " from boss");
+        //Debug.Log("Taking " + damage + " from boss");
         Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
     }
