@@ -1847,7 +1847,7 @@ MonoBehaviour:
   button: {fileID: 730548511}
   shopManager: {fileID: 2005551224}
   itemId: 1
-  price: 100
+  price: 200
   unlocked: 0
   weapon: {fileID: 432157975980956181, guid: 85035a50da3664757bcb475179934bbf, type: 3}
 --- !u!1 &846854866
@@ -4771,7 +4771,7 @@ MonoBehaviour:
   button: {fileID: 477713309}
   shopManager: {fileID: 2005551224}
   itemId: 2
-  price: 100
+  price: 1000
   unlocked: 0
   weapon: {fileID: 5807644142534343903, guid: f08ff6717f3e147bc9d6c89adac2dddf, type: 3}
 --- !u!1 &1737009295
@@ -4907,7 +4907,7 @@ MonoBehaviour:
   button: {fileID: 1089811486}
   shopManager: {fileID: 2005551224}
   itemId: 3
-  price: 100
+  price: 999
   unlocked: 0
   weapon: {fileID: 432157975980956181, guid: 0feab85125bb94a53a257a1346750687, type: 3}
 --- !u!1 &1947329372

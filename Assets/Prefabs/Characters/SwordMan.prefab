@@ -300,6 +300,7 @@ MonoBehaviour:
   explosion: {fileID: 1214371818292734, guid: 4d0e5f54256a59949aec59514c116c3b, type: 3}
   coin: {fileID: 3789404419344859658, guid: 4bc5efe5577364106b28ee21549e2e8c, type: 3}
   speed: 5
+  animator: {fileID: 0}
 --- !u!1 &9158121318712536213
 GameObject:
   m_ObjectHideFlags: 0

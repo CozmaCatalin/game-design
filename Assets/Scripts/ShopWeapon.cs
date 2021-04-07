@@ -20,12 +20,16 @@ public class ShopWeapon : MonoBehaviour
 	void TaskOnClick(){
 		if(ShopManager.unlocked[itemId] == false)
         {
-			Button PriceButton = this.transform.GetChild(0).gameObject.GetComponent<Button>();
-			Text ButtonText = PriceButton.transform.GetChild(0).gameObject.GetComponent<Text>();
-			PriceButton.transform.GetChild(1).gameObject.SetActive(false);
-			this.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
-			ButtonText.text = "EQUIP";
-			ShopManager.unlocked[itemId] = true;
+			if(ShopManager.currentCoins >= price)
+            {
+				Button PriceButton = this.transform.GetChild(0).gameObject.GetComponent<Button>();
+				Text ButtonText = PriceButton.transform.GetChild(0).gameObject.GetComponent<Text>();
+				PriceButton.transform.GetChild(1).gameObject.SetActive(false);
+				this.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+				ButtonText.text = "EQUIP";
+				ShopManager.unlocked[itemId] = true;
+				ShopManager.ModifyCoins(price);
+			}
 		} else
         {
 			Button PriceButton = this.transform.GetChild(0).gameObject.GetComponent<Button>();

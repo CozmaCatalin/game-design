@@ -139,8 +139,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            Debug.Log("Coin collected!" + ShopManager.currentCoins);
-
             AddOrRemoveCoins(collision.gameObject.GetComponent<Coin>().value);
             Destroy(collision.gameObject);
             coinCollect.Play();

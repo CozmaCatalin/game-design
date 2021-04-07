@@ -16,6 +16,7 @@ public class GamePlay : MonoBehaviour
     public Animator MenuButton;
     private PlayerController player;
     public Text waveNumber;
+    public Text coins;
     public bool isSpawning;
     public int wave = 0;
     public int maxWaves;
@@ -40,11 +41,18 @@ public class GamePlay : MonoBehaviour
     void Update()
     {
         GameManager();
+        //if (roundDone)
+        //{
+        //    Debug.Log("ROundDONE!");
+        //    MenuButton.SetBool("roundDone",true);
+        //}
     }
 
     private void GoToMenu()
     {
+        ShopManager.currentCoins += int.Parse(coins.text);
         SceneManager.LoadScene(sceneName: "Menu");
+
     }
 
     private void GameManager()
@@ -73,11 +81,7 @@ public class GamePlay : MonoBehaviour
             losed = true;
             roundDone = true;
         }
-        if (roundDone)
-        {
-            roundDone = false;
-            MenuButton.SetTrigger("fadeIn");
-        }
+
 
     }
 

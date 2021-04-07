@@ -12,9 +12,10 @@ public class ShopManager : MonoBehaviour
     public static ShopManager Instance { get { return instance; } }
 
     public static bool[] unlocked = new bool[5];
-    public static int currentCoins = 50;
+    public static int currentCoins = 100;
     public static ShopWeapon selectedWeapon;
     public static ShopMap selectedMap;
+    public static Text coins;
     public Text currentCoinsText;
     public Button[] buttons;
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class ShopManager : MonoBehaviour
     void Start()
     {
         buttons[PLAY_BTN].onClick.AddListener(PlayBtn);
+        coins = currentCoinsText;
         currentCoinsText.text = "Current coins: " + currentCoins;
     }
 
@@ -41,5 +43,11 @@ public class ShopManager : MonoBehaviour
     void PlayBtn()
     {
         SceneManager.LoadScene(sceneName: "Map1");
+    }
+
+    public static void ModifyCoins(int value)
+    {
+        currentCoins -= value;
+        coins.text = "Current coins: " + currentCoins;
     }
 }

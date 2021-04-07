@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour,IEnemy {
     public bool isDead;
     public GameObject explosion;
     public GameObject projectile;
+    public GameObject gameManager;
     public float waitForSpecialAttack1;
 
     public bool isMakinSpecialAttack1 = false;
@@ -46,6 +47,7 @@ public class Boss : MonoBehaviour,IEnemy {
 
         if (health <= 0) {
             anim.SetTrigger("death");
+            GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().roundDone = true;
         }
 
         // give the player some time to recover before taking more damage !
