@@ -41,14 +41,15 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coinCollect = GetComponent<AudioSource>();
+        Instantiate(ShopManager.selectedWeapon.weapon, weaponPos.transform.position, transform.rotation, weaponPos.transform);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Instantiate(weapon, weaponPos.transform.position, transform.rotation,weaponPos.transform);
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    Instantiate(weapon, weaponPos.transform.position, transform.rotation,weaponPos.transform);
+        //}
 
         playerHealth.value = health;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -138,6 +139,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
+            Debug.Log("Coin collected!" + ShopManager.currentCoins);
+
             AddOrRemoveCoins(collision.gameObject.GetComponent<Coin>().value);
             Destroy(collision.gameObject);
             coinCollect.Play();

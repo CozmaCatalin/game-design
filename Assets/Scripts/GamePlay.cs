@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GamePlay : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform[] spawnPositions;
     public GameObject[] enemyPrefabs;
+    public Button MenuBackButton;
     public Transform bossSpawn;
     public GameObject boss;
     public Animator waveAnimator;
+    public Animator MenuButton;
     private PlayerController player;
     public Text waveNumber;
     public bool isSpawning;
@@ -20,6 +23,7 @@ public class GamePlay : MonoBehaviour
     public int currentMonsters;
     public bool bossSpawned;
     public bool losed = false;
+    public bool roundDone = false;
 
 
     void Start()
@@ -29,12 +33,18 @@ public class GamePlay : MonoBehaviour
         maxWaves = 3;
         bossSpawned = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        MenuBackButton.onClick.AddListener(GoToMenu);
     }
 
     // Update is called once per frame
     void Update()
     {
         GameManager();
+    }
+
+    private void GoToMenu()
+    {
+        SceneManager.LoadScene(sceneName: "Menu");
     }
 
     private void GameManager()
@@ -61,22 +71,15 @@ public class GamePlay : MonoBehaviour
             waveNumber.text = "You lose!";
             waveAnimator.SetTrigger("fadeIn");
             losed = true;
+            roundDone = true;
         }
+        if (roundDone)
+        {
+            roundDone = false;
+            MenuButton.SetTrigger("fadeIn");
+        }
+
     }
-
-    //IEnumerator SpawnMonsters()
-    //{
-    //    while (monsterToSpawnPerWave > 0)
-    //    {
-    //        int randEnemy = Random.Range(0, enemyPrefabs.Length);
-    //        int randSpawnPoint = Random.Range(0, spawnPositions.Length);
-
-    //        Instantiate(enemyPrefabs[0], spawnPositions[randSpawnPoint].position, transform.rotation);
-    //        yield return new WaitForSeconds(2f);
-    //        monsterToSpawnPerWave -= 1;
-    //        currentMonsters += 1;
-    //    }
-    //}
 
     private void SpawnMonsters()
     {
