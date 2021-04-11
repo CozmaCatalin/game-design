@@ -11,6 +11,8 @@ TagManager:
   - GamePlay
   - BossHealth
   - CoolDownWeapon
+  - Sword
+  - Limit
   layers:
   - Default
   - TransparentFX
