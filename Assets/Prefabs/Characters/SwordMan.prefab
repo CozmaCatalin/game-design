@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 9158121318205875359}
   - component: {fileID: 9158121318205875356}
   - component: {fileID: 9158121318205875357}
+  - component: {fileID: 443213316967912894}
   m_Layer: 8
   m_Name: SwordMan
   m_TagString: Enemy
@@ -234,7 +235,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -279,8 +280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  rb: {fileID: 0}
   Animator: {fileID: 0}
   player: {fileID: 0}
+  jumpForce: 29
   isAttacking: 0
 --- !u!114 &9158121318205875357
 MonoBehaviour:
@@ -301,6 +304,22 @@ MonoBehaviour:
   coin: {fileID: 3789404419344859658, guid: 4bc5efe5577364106b28ee21549e2e8c, type: 3}
   speed: 5
   animator: {fileID: 0}
+--- !u!58 &443213316967912894
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9158121318205875330}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -1.78, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.24
 --- !u!1 &9158121318712536213
 GameObject:
   m_ObjectHideFlags: 0

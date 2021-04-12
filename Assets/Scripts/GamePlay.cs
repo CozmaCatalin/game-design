@@ -33,6 +33,7 @@ public class GamePlay : MonoBehaviour
         wave = 0;
         maxWaves = 3;
         bossSpawned = false;
+        isSpawning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         MenuBackButton.onClick.AddListener(GoToMenu);
     }
@@ -57,15 +58,15 @@ public class GamePlay : MonoBehaviour
 
     private void GameManager()
     {
-        if (currentMonsters == 0 && wave < maxWaves)
+        if (currentMonsters == 0 && wave < maxWaves && isSpawning == false)
         {
             waveAnimator.SetTrigger("fadeIn");
             wave += 1;
             waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(5, 10) * wave;
+            monsterToSpawnPerWave = Random.Range(15, 20) * wave;
             //monsterToSpawnPerWave = 1 * wave;
-            //StartCoroutine(SpawnMonsters());
-            SpawnMonsters();
+            StartCoroutine(SpawnMonsters());
+            //SpawnMonsters();
         }
         if(currentMonsters == 0 && wave == maxWaves && bossSpawned == false)
         {
@@ -85,8 +86,9 @@ public class GamePlay : MonoBehaviour
 
     }
 
-    private void SpawnMonsters()
+    IEnumerator SpawnMonsters()
     {
+        isSpawning = true;
         while (monsterToSpawnPerWave > 0)
         {
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
@@ -98,10 +100,13 @@ public class GamePlay : MonoBehaviour
             {
                 randSpawnPoint = Random.Range(2, spawnPositions.Length);
             }
+            yield return new WaitForSeconds(1f);
+            Debug.Log("Spawn monster after 2 seconds");
             Instantiate(enemyPrefabs[randEnemy], spawnPositions[randSpawnPoint].position, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;
         }
+        isSpawning = false;
     }
     
 }

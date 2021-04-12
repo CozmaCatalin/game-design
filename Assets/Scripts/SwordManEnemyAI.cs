@@ -8,17 +8,19 @@ public class SwordManEnemyAI : MonoBehaviour
     [Header("Stats")]
     public float speed;
     private float stoppingDistance;
+    public Rigidbody2D rb;
     public Animator Animator;
     public Transform player;
+    public float jumpForce;
     public bool isAttacking;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
         speed = 12;
         stoppingDistance = 3;
-
-    Animator = GetComponent<Animator>();
+        Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -57,6 +59,14 @@ public class SwordManEnemyAI : MonoBehaviour
             }
 
 
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Obstacle"))
+        {
+            Debug.Log("Enemy will jump");
+            rb.velocity = Vector2.up * (collision.GetComponent<Obstacle>().height + 2f);
         }
     }
 }
