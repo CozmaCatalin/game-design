@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6048326034149656396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4024751904034194500}
+  m_Layer: 8
+  m_Name: FeetPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4024751904034194500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6048326034149656396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.007, y: -0.378, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9158121318205875352}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9158121317717480733
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,6 +207,7 @@ GameObject:
   - component: {fileID: 9158121318205875356}
   - component: {fileID: 9158121318205875357}
   - component: {fileID: 443213316967912894}
+  - component: {fileID: 4008404820713246306}
   m_Layer: 8
   m_Name: SwordMan
   m_TagString: Enemy
@@ -198,6 +229,7 @@ Transform:
   - {fileID: 9158121318153747153}
   - {fileID: 9158121318774857071}
   - {fileID: 9158121318068993179}
+  - {fileID: 4024751904034194500}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -254,7 +286,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.34}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -265,7 +297,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.46}
   m_EdgeRadius: 0
 --- !u!114 &9158121318205875356
 MonoBehaviour:
@@ -285,6 +317,12 @@ MonoBehaviour:
   player: {fileID: 0}
   jumpForce: 29
   isAttacking: 0
+  feetPos: {fileID: 4024751904034194500}
+  checkRadius: 0.3
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
+  isGrounded: 0
 --- !u!114 &9158121318205875357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,7 +357,23 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -1.78, y: 0}
   serializedVersion: 2
-  m_Radius: 0.24
+  m_Radius: 0.25
+--- !u!58 &4008404820713246306
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9158121318205875330}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.6, y: -1.08}
+  serializedVersion: 2
+  m_Radius: 0.25
 --- !u!1 &9158121318712536213
 GameObject:
   m_ObjectHideFlags: 0

@@ -63,7 +63,7 @@ public class GamePlay : MonoBehaviour
             waveAnimator.SetTrigger("fadeIn");
             wave += 1;
             waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(15, 20) * wave;
+            monsterToSpawnPerWave = Random.Range(5, 15) * wave;
             //monsterToSpawnPerWave = 1 * wave;
             StartCoroutine(SpawnMonsters());
             //SpawnMonsters();

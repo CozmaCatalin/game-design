@@ -13,6 +13,10 @@ public class SwordManEnemyAI : MonoBehaviour
     public Transform player;
     public float jumpForce;
     public bool isAttacking;
+    public Transform feetPos;
+    public float checkRadius;
+    public LayerMask whatIsGround;
+    public bool isGrounded;
 
     void Start()
     {
@@ -26,6 +30,8 @@ public class SwordManEnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
+
         if (player != null)
         {
 
@@ -63,9 +69,9 @@ public class SwordManEnemyAI : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Obstacle"))
+        if (collision.CompareTag("Obstacle") && isGrounded)
         {
-            Debug.Log("Enemy will jump");
+            Debug.Log("Enemy will jump on " + collision.name);
             rb.velocity = Vector2.up * (collision.GetComponent<Obstacle>().height + 2f);
         }
     }
