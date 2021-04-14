@@ -31,7 +31,7 @@ public class GamePlay : MonoBehaviour
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 3;
+        maxWaves = 1;
         bossSpawned = false;
         isSpawning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();

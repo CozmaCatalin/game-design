@@ -42,7 +42,10 @@ public class ShopManager : MonoBehaviour
 
     void PlayBtn()
     {
-        SceneManager.LoadScene(sceneName: "Map1");
+        if (selectedWeapon)
+        {
+            SceneManager.LoadScene(sceneName: "Map1");
+        }
     }
 
     public static void ModifyCoins(int value)

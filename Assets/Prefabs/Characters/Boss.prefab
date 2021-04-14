@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 911841398868287204}
   - component: {fileID: 911841398868287205}
   - component: {fileID: 911841398868287210}
-  - component: {fileID: 911841398868287211}
+  - component: {fileID: 606628895854283850}
   m_Layer: 8
   m_Name: Boss
   m_TagString: Boss
@@ -484,6 +484,9 @@ MonoBehaviour:
   explosion: {fileID: 1214371818292734, guid: 4d0e5f54256a59949aec59514c116c3b, type: 3}
   projectile: {fileID: 937069371530392519, guid: 484f71070b0374b11b70465a818f61a1,
     type: 3}
+  coin: {fileID: 3789404419344859658, guid: 4bc5efe5577364106b28ee21549e2e8c, type: 3}
+  gameManager: {fileID: 0}
+  waitForSpecialAttack1: 0
   isMakinSpecialAttack1: 0
 --- !u!58 &911841398868287210
 CircleCollider2D:
@@ -500,8 +503,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.26, y: 0.96}
   serializedVersion: 2
-  m_Radius: 4.56
---- !u!50 &911841398868287211
+  m_Radius: 4
+--- !u!50 &606628895854283850
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -509,14 +512,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 911841398868287206}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
