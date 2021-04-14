@@ -71,7 +71,6 @@ public class SwordManEnemyAI : MonoBehaviour
     {
         if (collision.CompareTag("Obstacle") && isGrounded)
         {
-            Debug.Log("Enemy will jump on " + collision.name);
             rb.velocity = Vector2.up * (collision.GetComponent<Obstacle>().height + 2f);
         }
     }
