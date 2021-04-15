@@ -39,4 +39,14 @@ public class Enemy : MonoBehaviour,IEnemy {
         //Instantiate(explosion, transform.position, Quaternion.identity);
         health -= damage;
     }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Limit"))
+        {
+            health = 0;
+        }
+
+    }
+
 }
