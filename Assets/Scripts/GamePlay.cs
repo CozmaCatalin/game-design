@@ -107,5 +107,4 @@ public class GamePlay : MonoBehaviour
         }
         isSpawning = false;
     }
-    
 }

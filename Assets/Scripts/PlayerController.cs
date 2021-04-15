@@ -143,6 +143,12 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             coinCollect.Play();
         }
+        
+        if (collision.gameObject.CompareTag("Limit"))
+        {
+            health = 0;
+        }
+        
     }
 
 }
