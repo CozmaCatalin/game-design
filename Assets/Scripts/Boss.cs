@@ -15,6 +15,7 @@ public class Boss : MonoBehaviour,IEnemy {
     public bool isDead;
     public GameObject explosion;
     public GameObject projectile;
+    public GameObject coin;
     public GameObject gameManager;
     public float waitForSpecialAttack1;
 
@@ -48,6 +49,7 @@ public class Boss : MonoBehaviour,IEnemy {
         if (health <= 0) {
             anim.SetTrigger("death");
             GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().roundDone = true;
+            StartCoroutine(GiveCoins());
         }
 
         // give the player some time to recover before taking more damage !
@@ -84,6 +86,18 @@ public class Boss : MonoBehaviour,IEnemy {
         //Debug.Log("Special attack maded!");
         isMakinSpecialAttack1 = false;
 
+    }
+
+    IEnumerator GiveCoins()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < 18; i++)
+        {
+            GameObject coinInstantiated = Instantiate(coin, transform.position, Quaternion.identity);
+            coinInstantiated.transform.Rotate(0, 0, i*20, 0);
+            coinInstantiated.transform.Translate(Vector2.up * 10f * Time.deltaTime);
+        }
+        Destroy(gameObject);
     }
 
 

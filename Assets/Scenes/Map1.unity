@@ -6085,7 +6085,7 @@ MonoBehaviour:
   playerHealth: {fileID: 1419306235}
   currentCoins: 0
   coinCollect: {fileID: 0}
-  weapon: {fileID: 432157975980956181, guid: ec17342ff1e484025851c86283007b7f, type: 3}
+  weapon: {fileID: 5807644142534343903, guid: f08ff6717f3e147bc9d6c89adac2dddf, type: 3}
   weaponPos: {fileID: 1506749031}
 --- !u!50 &1334417013
 Rigidbody2D:
@@ -6121,7 +6121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05, y: 1.53}
+  m_Offset: {x: -0.05, y: 1.61}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -6132,7 +6132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.9, y: 6.68}
+  m_Size: {x: 4.9, y: 6.67}
   m_EdgeRadius: 0
 --- !u!82 &1334417015
 AudioSource:
@@ -7382,7 +7382,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715535264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14, y: -1.4, z: 0}
+  m_LocalPosition: {x: 117.6, y: -6.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 923920552}

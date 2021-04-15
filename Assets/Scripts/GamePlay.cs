@@ -31,7 +31,7 @@ public class GamePlay : MonoBehaviour
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 3;
+        maxWaves = 1;
         bossSpawned = false;
         isSpawning = false;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -101,7 +101,6 @@ public class GamePlay : MonoBehaviour
                 randSpawnPoint = Random.Range(2, spawnPositions.Length);
             }
             yield return new WaitForSeconds(1f);
-            Debug.Log("Spawn monster after 2 seconds");
             Instantiate(enemyPrefabs[randEnemy], spawnPositions[randSpawnPoint].position, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;

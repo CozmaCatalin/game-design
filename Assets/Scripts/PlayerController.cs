@@ -46,10 +46,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    Instantiate(weapon, weaponPos.transform.position, transform.rotation,weaponPos.transform);
-        //}
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Instantiate(weapon, weaponPos.transform.position, transform.rotation, weaponPos.transform);
+        }
 
         playerHealth.value = health;
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

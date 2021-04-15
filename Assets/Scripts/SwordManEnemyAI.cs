@@ -67,11 +67,10 @@ public class SwordManEnemyAI : MonoBehaviour
 
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Obstacle") && isGrounded)
         {
-            Debug.Log("Enemy will jump on " + collision.name);
             rb.velocity = Vector2.up * (collision.GetComponent<Obstacle>().height + 2f);
         }
     }
