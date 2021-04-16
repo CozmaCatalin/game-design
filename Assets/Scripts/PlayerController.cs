@@ -146,6 +146,7 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Limit"))
         {
+            heartsNumber = 0;
             health = 0;
         }
         

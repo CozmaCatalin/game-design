@@ -17,6 +17,7 @@ public class SwordManEnemyAI : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
     public bool isGrounded;
+    private bool isIdle;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class SwordManEnemyAI : MonoBehaviour
         speed = 12;
         stoppingDistance = 3;
         Animator = GetComponent<Animator>();
+        isIdle = false;
     }
 
     // Update is called once per frame
@@ -34,37 +36,39 @@ public class SwordManEnemyAI : MonoBehaviour
 
         if (player != null)
         {
-
-            if(transform.position.x < player.transform.position.x) 
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-            }
-            else
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-
-            }
-            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
-            if (Mathf.Abs(distanceToPlayer - stoppingDistance) <= 1f)
-            {
-                Animator.SetBool("isRunning", false);
-                if (!isAttacking)
+            
+                if (transform.position.x < player.transform.position.x)
                 {
-                    Animator.SetTrigger("atack");
-                    isAttacking = true;
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                 }
-                //Debug.Log("[1]");
-
-            } else if (distanceToPlayer > stoppingDistance)
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    isIdle = false;
+                }
+                float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            
+            if (!isIdle)
             {
-                Animator.SetBool("isRunning", true);
-                isAttacking = false;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
-                //Debug.Log("[2]" + distanceToPlayer);
+                if (Mathf.Abs(distanceToPlayer - stoppingDistance) <= 1f)
+                {
+                    Animator.SetBool("isRunning", false);
+                    if (!isAttacking)
+                    {
+                        Animator.SetTrigger("atack");
+                        isAttacking = true;
+                    }
+                    //Debug.Log("[1]");
+
+                }
+                else if (distanceToPlayer > stoppingDistance)
+                {
+                    Animator.SetBool("isRunning", true);
+                    isAttacking = false;
+                    transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+                    //Debug.Log("[2]" + distanceToPlayer);
+                }
             }
-
-
         }
     }
         private void OnTriggerEnter2D(Collider2D collision)
@@ -72,6 +76,10 @@ public class SwordManEnemyAI : MonoBehaviour
         if (collision.CompareTag("Obstacle") && isGrounded)
         {
             rb.velocity = Vector2.up * (collision.GetComponent<Obstacle>().height + 2f);
+        }
+        if (collision.CompareTag("StopEnemies"))
+        {
+            isIdle = true;
         }
     }
 }

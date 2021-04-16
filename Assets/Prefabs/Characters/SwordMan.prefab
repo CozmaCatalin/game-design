@@ -323,6 +323,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   isGrounded: 0
+  leftLimit: -120
+  rightLimit: 130
 --- !u!114 &9158121318205875357
 MonoBehaviour:
   m_ObjectHideFlags: 0
