@@ -40,11 +40,10 @@ public class SwordManEnemyAI : MonoBehaviour
                 if (transform.position.x < player.transform.position.x)
                 {
                     transform.eulerAngles = new Vector3(0, 180, 0);
-                }
+            }
                 else
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
-                    isIdle = false;
                 }
                 float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             
