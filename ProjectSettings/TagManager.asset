@@ -15,6 +15,7 @@ TagManager:
   - Limit
   - Obstacle
   - StopEnemies
+  - Border
   layers:
   - Default
   - TransparentFX

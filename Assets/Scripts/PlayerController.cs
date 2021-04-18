@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.L))
         {
             Instantiate(weapon, weaponPos.transform.position, transform.rotation, weaponPos.transform);
@@ -137,19 +138,23 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Coin"))
         {
             AddOrRemoveCoins(collision.gameObject.GetComponent<Coin>().value);
             Destroy(collision.gameObject);
             coinCollect.Play();
         }
-        
         if (collision.gameObject.CompareTag("Limit"))
         {
             heartsNumber = 0;
             health = 0;
         }
-        
+        if (collision.gameObject)
+        {
+            rb.AddForce(transform.up * 1f, ForceMode2D.Impulse);
+        }
+
     }
 
 }
