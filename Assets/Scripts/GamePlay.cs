@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class GamePlay : MonoBehaviour
 {
+    public int playerSpawnPoint = 4;
     // Start is called before the first frame update
     public Transform[] spawnPositions;
     public GameObject[] enemyPrefabs;
     public Button MenuBackButton;
     public Transform bossSpawn;
     public GameObject boss;
+    public GameObject playerPrefab;
     public Animator waveAnimator;
     public Animator MenuButton;
     private PlayerController player;
@@ -34,7 +37,8 @@ public class GamePlay : MonoBehaviour
         maxWaves = 3;
         bossSpawned = false;
         isSpawning = false;
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerSpawnPoint = 4;
+        SpawnPlayer();
         MenuBackButton.onClick.AddListener(GoToMenu);
     }
 
@@ -47,6 +51,13 @@ public class GamePlay : MonoBehaviour
         //    Debug.Log("ROundDONE!");
         //    MenuButton.SetBool("roundDone",true);
         //}
+    }
+
+    public void SpawnPlayer()
+    {
+        Instantiate(playerPrefab, spawnPositions[playerSpawnPoint].position, transform.rotation);
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
     }
 
     private void GoToMenu()

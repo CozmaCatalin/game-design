@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public bool isJumping;
 
     public Animator camAnim;
-    public int health = 50;
-    public int maxHealth = 50;
+    public int health = 100;
+    public int maxHealth = 100;
     public GameObject deathEffect;
     public GameObject explosion;
     public Slider playerHealth;
@@ -38,6 +38,13 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        for(int i = 1; i <= 3; i++)
+        {
+            hearts[i - 1] = GameObject.Find("Heart" + i);
+        }
+        playerHealth =  GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Slider>();
+        camAnim = GameObject.Find("Main Camera").GetComponent<Animator>();
+        score = GameObject.Find("CoinsValue").GetComponent<Text>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         coinCollect = GetComponent<AudioSource>();
@@ -124,6 +131,8 @@ public class PlayerController : MonoBehaviour
         {
             heartsNumber -= 1;
             Destroy(hearts[heartsNumber].gameObject);
+            GamePlay gp = GameObject.Find("GamePlay").GetComponent<GamePlay>();
+            transform.position = gp.spawnPositions[gp.playerSpawnPoint].position;
             health = maxHealth;
         } else
         {
@@ -147,7 +156,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Limit"))
         {
-            heartsNumber = 0;
+            Debug.Log("Hit limit!!");
             health = 0;
         }
         if (collision.gameObject)
