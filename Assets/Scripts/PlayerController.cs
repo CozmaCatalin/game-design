@@ -147,19 +147,22 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.gameObject.CompareTag("Coin"))
+        GameObject c = collision.gameObject;
+        if (c.CompareTag("EnterWave"))
         {
-            AddOrRemoveCoins(collision.gameObject.GetComponent<Coin>().value);
+            GameObject.Find("GamePlay").GetComponent<GamePlay>().EnterWave();
+        }
+        if (c.CompareTag("Coin"))
+        {
+            AddOrRemoveCoins(c.GetComponent<Coin>().value);
             Destroy(collision.gameObject);
             coinCollect.Play();
         }
-        if (collision.gameObject.CompareTag("Limit"))
+        if (c.CompareTag("Limit"))
         {
-            Debug.Log("Hit limit!!");
             health = 0;
         }
-        if (collision.gameObject)
+        if (c)
         {
             rb.AddForce(transform.up * 1f, ForceMode2D.Impulse);
         }

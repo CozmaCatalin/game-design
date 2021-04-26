@@ -17,6 +17,7 @@ TagManager:
   - StopEnemies
   - Border
   - PlayerHealth
+  - EnterWave
   layers:
   - Default
   - TransparentFX

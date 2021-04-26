@@ -11,6 +11,8 @@ public class GamePlay : MonoBehaviour
     // Start is called before the first frame update
     public Transform[] spawnPositions;
     public GameObject[] enemyPrefabs;
+    public GameObject[] enterWaves;
+    public GameObject[] walls;
     public Button MenuBackButton;
     public Transform bossSpawn;
     public GameObject boss;
@@ -25,6 +27,7 @@ public class GamePlay : MonoBehaviour
     public int maxWaves;
     public int monsterToSpawnPerWave = 10;
     public int currentMonsters;
+    public int currentWall = -1;
     public bool bossSpawned;
     public bool losed = false;
     public bool roundDone = false;
@@ -34,23 +37,23 @@ public class GamePlay : MonoBehaviour
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 3;
+        maxWaves = 4;
         bossSpawned = false;
         isSpawning = false;
         playerSpawnPoint = 4;
         SpawnPlayer();
+        currentWall = -1;
         MenuBackButton.onClick.AddListener(GoToMenu);
+        EnterWave();
     }
 
-    // Update is called once per frame
     void Update()
     {
         GameManager();
-        //if (roundDone)
-        //{
-        //    Debug.Log("ROundDONE!");
-        //    MenuButton.SetBool("roundDone",true);
-        //}
+        if (roundDone)
+        {
+            Debug.Log("ROundDONE!");
+        }
     }
 
     public void SpawnPlayer()
@@ -71,18 +74,7 @@ public class GamePlay : MonoBehaviour
     {
         if (currentMonsters == 0 && wave < maxWaves && isSpawning == false)
         {
-            waveAnimator.SetTrigger("fadeIn");
-            wave += 1;
-            waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(10, 15) * wave;
-            //monsterToSpawnPerWave = 1 * wave;
-            StartCoroutine(SpawnMonsters());
-            //SpawnMonsters();
-        }
-        if(currentMonsters == 0 && wave == maxWaves && bossSpawned == false)
-        {
-            bossSpawned = true;
-            Instantiate(boss, bossSpawn.position, transform.rotation);
+            walls[currentWall].SetActive(false);
         }
 
         if(player.health <= 0 && player.heartsNumber <= 0 && losed == false)
@@ -103,19 +95,45 @@ public class GamePlay : MonoBehaviour
         while (monsterToSpawnPerWave > 0)
         {
             int randEnemy = Random.Range(0, enemyPrefabs.Length);
-            int randSpawnPoint = 0 ;
-            if(randEnemy == 1)
-            {
-                randSpawnPoint = Random.Range(0,2);
-            } else
-            {
-                randSpawnPoint = Random.Range(2, spawnPositions.Length);
-            }
+            //int randSpawnPoint = 0 ;
+            //if(randEnemy == 1)
+            //{
+            //    randSpawnPoint = Random.Range(0,2);
+            //} else
+            //{
+            //    randSpawnPoint = Random.Range(2, spawnPositions.Length);
+            //}
             yield return new WaitForSeconds(1f);
-            Instantiate(enemyPrefabs[randEnemy], spawnPositions[randSpawnPoint].position, transform.rotation);
+            Instantiate(enemyPrefabs[randEnemy], spawnPositions[wave-1].position, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;
         }
         isSpawning = false;
+    }
+
+    public void EnterWave()
+    {
+        if (currentWall >= 0)
+        {
+            enterWaves[currentWall].SetActive(false);
+            spawnPositions[playerSpawnPoint].transform.position = enterWaves[currentWall].transform.position;
+            walls[currentWall].SetActive(true);
+        }
+
+        
+            Debug.Log("Enter wabe from gameplat!");
+            waveAnimator.SetTrigger("fadeIn");
+            wave += 1;
+            currentWall += 1;
+            waveNumber.text = "Wave " + wave;
+            monsterToSpawnPerWave = Random.Range(1, 2) * wave;
+            StartCoroutine(SpawnMonsters());
+        
+
+        if(wave == maxWaves && bossSpawned == false)
+        {
+            bossSpawned = true;
+            Instantiate(boss, bossSpawn.position, transform.rotation);
+        }
     }
 }
