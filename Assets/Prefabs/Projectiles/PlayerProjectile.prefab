@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4568867700151830}
   - component: {fileID: 212578740516415340}
   - component: {fileID: 114312984765984224}
+  - component: {fileID: 795564756217828144}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -104,3 +105,19 @@ MonoBehaviour:
   tagFinded: 
   destroyEffect: {fileID: 1657798570406232, guid: 816b2e55a22aea04597fe7990ad0d333,
     type: 3}
+--- !u!58 &795564756217828144
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1927733496957370}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.17}
+  serializedVersion: 2
+  m_Radius: 1.75

@@ -52,7 +52,10 @@ public class GamePlay : MonoBehaviour
         GameManager();
         if (roundDone)
         {
-            Debug.Log("ROundDONE!");
+            waveNumber.color = Color.green;
+            waveNumber.text = "You win!";
+            waveAnimator.SetTrigger("fadeIn");
+            roundDone = false;
         }
     }
 

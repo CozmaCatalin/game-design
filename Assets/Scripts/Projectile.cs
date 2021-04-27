@@ -24,8 +24,7 @@ public class Projectile : MonoBehaviour {
         RaycastHit2D hitInfo = Physics2D.Raycast(transform.position, transform.up, distance, whatIsSolid);
         if (hitInfo.collider != null) {
             tagFinded = hitInfo.collider.tag;
-            Debug.Log(tagFinded);
-            if (hitInfo.collider.CompareTag("Enemy") || hitInfo.collider.CompareTag("Boss")) {
+            if (hitInfo.collider.CompareTag("Enemy")) {
                 hitInfo.collider.GetComponent<IEnemy>().TakeDamage(damage);
             }
             DestroyProjectile();

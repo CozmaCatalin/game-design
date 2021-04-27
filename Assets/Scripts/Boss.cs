@@ -48,7 +48,6 @@ public class Boss : MonoBehaviour,IEnemy {
 
         if (health <= 0) {
             anim.SetTrigger("death");
-            GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().roundDone = true;
             StartCoroutine(GiveCoins());
         }
 
@@ -97,6 +96,7 @@ public class Boss : MonoBehaviour,IEnemy {
             coinInstantiated.transform.Rotate(0, 0, i*20, 0);
             coinInstantiated.transform.Translate(Vector2.up * 10f * Time.deltaTime);
         }
+        GameObject.FindGameObjectWithTag("GamePlay").GetComponent<GamePlay>().roundDone = true;
         Destroy(gameObject);
     }
 
