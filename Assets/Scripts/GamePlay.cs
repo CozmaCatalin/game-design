@@ -106,8 +106,14 @@ public class GamePlay : MonoBehaviour
             //{
             //    randSpawnPoint = Random.Range(2, spawnPositions.Length);
             //}
+            if(wave == 3)
+            {
+                randEnemy = 0;
+            }
             yield return new WaitForSeconds(1f);
-            Instantiate(enemyPrefabs[randEnemy], spawnPositions[wave-1].position, transform.rotation);
+            Vector3 spawnPositionEnemy = spawnPositions[wave - 1].position;
+            spawnPositionEnemy.x += Random.Range(5, 20);
+            Instantiate(enemyPrefabs[randEnemy], spawnPositionEnemy, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;
         }
@@ -129,7 +135,7 @@ public class GamePlay : MonoBehaviour
             wave += 1;
             currentWall += 1;
             waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(1, 2) * wave;
+            monsterToSpawnPerWave = Random.Range(3, 5) * wave;
             StartCoroutine(SpawnMonsters());
         
 
