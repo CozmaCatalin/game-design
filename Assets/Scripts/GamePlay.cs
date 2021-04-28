@@ -112,7 +112,7 @@ public class GamePlay : MonoBehaviour
             }
             yield return new WaitForSeconds(1f);
             Vector3 spawnPositionEnemy = spawnPositions[wave - 1].position;
-            spawnPositionEnemy.x += Random.Range(5, 20);
+            spawnPositionEnemy.x += Random.Range(-50, 50);
             Instantiate(enemyPrefabs[randEnemy], spawnPositionEnemy, transform.rotation);
             monsterToSpawnPerWave -= 1;
             currentMonsters += 1;
