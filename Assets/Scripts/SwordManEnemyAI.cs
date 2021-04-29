@@ -25,7 +25,7 @@ public class SwordManEnemyAI : MonoBehaviour
         speed = 12;
         stoppingDistance = 3;
         Animator = GetComponent<Animator>();
-    }
+    }   
 
     // Update is called once per frame
     void Update()
