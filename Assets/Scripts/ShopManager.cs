@@ -12,7 +12,7 @@ public class ShopManager : MonoBehaviour
     public static ShopManager Instance { get { return instance; } }
 
     public static bool[] unlocked = new bool[5];
-    public static int currentCoins = 100;
+    public static int currentCoins = 1000;
     public static ShopWeapon selectedWeapon;
     public static ShopMap selectedMap;
     public static Text coins;
