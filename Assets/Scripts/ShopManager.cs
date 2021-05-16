@@ -16,6 +16,13 @@ public class ShopManager : MonoBehaviour
     public static ShopWeapon selectedWeapon;
     public static ShopMap selectedMap;
     public static Text coins;
+    public static float speed = 0.1f;
+    public static float strength = 0.1f;
+    public static float health = 0.1f;
+    public static int speedPrice = 10;
+    public static int strengthPrice = 10;
+    public static int healthPrice = 10;
+
     public Text currentCoinsText;
     public Button[] buttons;
     // Start is called before the first frame update
