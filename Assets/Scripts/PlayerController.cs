@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public bool isJumping;
 
     public Animator camAnim;
-    public int health = 100;
-    public int maxHealth = 100;
+    public float health;
+    public float maxHealth;
     public GameObject deathEffect;
     public GameObject explosion;
     public Slider playerHealth;
@@ -42,7 +42,13 @@ public class PlayerController : MonoBehaviour
         {
             hearts[i - 1] = GameObject.Find("Heart" + i);
         }
-        playerHealth =  GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Slider>();
+        speed = 20 + (ShopManager.speed * 30);
+        float HEALTH = 25 + ShopManager.health * 250;
+        playerHealth = GameObject.FindGameObjectWithTag("PlayerHealth").GetComponent<Slider>();
+        playerHealth.maxValue = HEALTH;
+        playerHealth.value = HEALTH;
+        health = HEALTH;
+        maxHealth = HEALTH;
         camAnim = GameObject.Find("Main Camera").GetComponent<Animator>();
         score = GameObject.Find("CoinsValue").GetComponent<Text>();
         anim = GetComponent<Animator>();
@@ -120,9 +126,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        float defenseDamage = (1-ShopManager.strength) * damage;
         camAnim.SetTrigger("shake");
         Instantiate(explosion, transform.position, Quaternion.identity);
-        health -= damage;
+        health -= defenseDamage;
+        Debug.Log("Enemy losed " + defenseDamage);
     }
 
     public void TakeHearth()
