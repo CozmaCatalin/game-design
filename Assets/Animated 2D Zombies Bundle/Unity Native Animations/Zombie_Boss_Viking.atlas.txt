@@ -1,0 +1,41 @@
+
+Zombie_Boss_Viking.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+07_arm_left_b
+  rotate: true
+  xy: 415, 475
+  size: 168, 469
+  orig: 168, 469
+  offset: 0, 0
+  index: -1
+07_arm_right_b
+  rotate: true
+  xy: 415, 645
+  size: 290, 491
+  orig: 290, 491
+  offset: 0, 0
+  index: -1
+07_body_b
+  rotate: false
+  xy: 2, 428
+  size: 411, 507
+  orig: 411, 507
+  offset: 0, 0
+  index: -1
+07_head_b
+  rotate: false
+  xy: 2, 2
+  size: 470, 424
+  orig: 470, 424
+  offset: 0, 0
+  index: -1
+07_leg_right_b
+  rotate: false
+  xy: 474, 130
+  size: 147, 343
+  orig: 147, 343
+  offset: 0, 0
+  index: -1

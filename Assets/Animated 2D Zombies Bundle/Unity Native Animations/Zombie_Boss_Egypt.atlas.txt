@@ -1,0 +1,41 @@
+
+Zombie_Boss_Egypt.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+08_arm_left_b
+  rotate: true
+  xy: 413, 519
+  size: 162, 450
+  orig: 162, 450
+  offset: 0, 0
+  index: -1
+08_arm_right_b
+  rotate: true
+  xy: 413, 683
+  size: 270, 481
+  orig: 270, 481
+  offset: 0, 0
+  index: -1
+08_body_b
+  rotate: false
+  xy: 2, 461
+  size: 409, 492
+  orig: 409, 492
+  offset: 0, 0
+  index: -1
+08_head_b
+  rotate: true
+  xy: 2, 2
+  size: 457, 482
+  orig: 457, 482
+  offset: 0, 0
+  index: -1
+08_leg_right_b
+  rotate: false
+  xy: 486, 185
+  size: 147, 332
+  orig: 147, 332
+  offset: 0, 0
+  index: -1

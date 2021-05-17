@@ -1,0 +1,41 @@
+
+Zombie_Boss_Superhero.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+06_arm_left_b
+  rotate: true
+  xy: 276, 3
+  size: 156, 443
+  orig: 156, 443
+  offset: 0, 0
+  index: -1
+06_arm_right_b
+  rotate: false
+  xy: 2, 2
+  size: 272, 477
+  orig: 272, 477
+  offset: 0, 0
+  index: -1
+06_body_b
+  rotate: false
+  xy: 2, 481
+  size: 415, 504
+  orig: 415, 504
+  offset: 0, 0
+  index: -1
+06_head_b
+  rotate: false
+  xy: 276, 161
+  size: 301, 318
+  orig: 301, 318
+  offset: 0, 0
+  index: -1
+06_leg_right_b
+  rotate: false
+  xy: 419, 651
+  size: 168, 334
+  orig: 168, 334
+  offset: 0, 0
+  index: -1

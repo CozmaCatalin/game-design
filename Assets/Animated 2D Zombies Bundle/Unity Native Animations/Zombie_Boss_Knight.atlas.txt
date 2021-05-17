@@ -1,0 +1,41 @@
+
+Zombie_Boss_Knight.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+10_arm_left_b
+  rotate: true
+  xy: 2, 690
+  size: 153, 479
+  orig: 153, 479
+  offset: 0, 0
+  index: -1
+10_arm_right_b
+  rotate: true
+  xy: 2, 412
+  size: 274, 532
+  orig: 274, 532
+  offset: 0, 0
+  index: -1
+10_body_b
+  rotate: true
+  xy: 2, 2
+  size: 408, 459
+  orig: 408, 459
+  offset: 0, 0
+  index: -1
+10_head_b
+  rotate: true
+  xy: 536, 382
+  size: 304, 315
+  orig: 304, 315
+  offset: 0, 0
+  index: -1
+10_leg_right_b
+  rotate: true
+  xy: 483, 688
+  size: 155, 325
+  orig: 155, 325
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,41 @@
+
+Zombie_Boss_FuturePolice.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+09_arm_left_b
+  rotate: true
+  xy: 343, 692
+  size: 161, 446
+  orig: 161, 446
+  offset: 0, 0
+  index: -1
+09_arm_right_b
+  rotate: true
+  xy: 2, 424
+  size: 266, 474
+  orig: 266, 474
+  offset: 0, 0
+  index: -1
+09_body_b
+  rotate: true
+  xy: 2, 2
+  size: 405, 503
+  orig: 405, 503
+  offset: 0, 0
+  index: -1
+09_head_b
+  rotate: false
+  xy: 478, 409
+  size: 305, 281
+  orig: 305, 281
+  offset: 0, 0
+  index: -1
+09_leg_right_b
+  rotate: true
+  xy: 2, 699
+  size: 154, 339
+  orig: 154, 339
+  offset: 0, 0
+  index: -1

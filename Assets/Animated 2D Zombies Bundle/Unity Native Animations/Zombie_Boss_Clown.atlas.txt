@@ -1,0 +1,48 @@
+
+Zombie_Boss_Clown.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+04_arm_left_b
+  rotate: true
+  xy: 2, 740
+  size: 159, 450
+  orig: 159, 450
+  offset: 0, 0
+  index: -1
+04_arm_right_b
+  rotate: true
+  xy: 343, 409
+  size: 270, 477
+  orig: 270, 477
+  offset: 0, 0
+  index: -1
+04_body_b
+  rotate: true
+  xy: 343, 2
+  size: 405, 514
+  orig: 405, 514
+  offset: 0, 0
+  index: -1
+04_head_b
+  rotate: true
+  xy: 2, 120
+  size: 392, 339
+  orig: 392, 339
+  offset: 0, 0
+  index: -1
+04_leg_left_b
+  rotate: true
+  xy: 2, 514
+  size: 224, 339
+  orig: 224, 339
+  offset: 0, 0
+  index: -1
+04_leg_right_b
+  rotate: true
+  xy: 454, 681
+  size: 218, 344
+  orig: 218, 344
+  offset: 0, 0
+  index: -1

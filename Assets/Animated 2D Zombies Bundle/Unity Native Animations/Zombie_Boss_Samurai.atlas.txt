@@ -1,0 +1,41 @@
+
+Zombie_Boss_Samurai.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+01_arm_left_b
+  rotate: false
+  xy: 694, 468
+  size: 172, 450
+  orig: 172, 450
+  offset: 0, 0
+  index: -1
+01_arm_right_b
+  rotate: false
+  xy: 413, 439
+  size: 279, 479
+  orig: 279, 479
+  offset: 0, 0
+  index: -1
+01_body_b
+  rotate: false
+  xy: 2, 395
+  size: 409, 523
+  orig: 409, 523
+  offset: 0, 0
+  index: -1
+01_head_b
+  rotate: false
+  xy: 2, 2
+  size: 368, 391
+  orig: 368, 391
+  offset: 0, 0
+  index: -1
+01_leg_right_b
+  rotate: false
+  xy: 372, 56
+  size: 159, 337
+  orig: 159, 337
+  offset: 0, 0
+  index: -1

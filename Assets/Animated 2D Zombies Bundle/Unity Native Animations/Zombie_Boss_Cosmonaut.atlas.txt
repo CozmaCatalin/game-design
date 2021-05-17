@@ -1,0 +1,41 @@
+
+Zombie_Boss_Cosmonaut.png
+size: 1024,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+02_arm_left_b
+  rotate: true
+  xy: 342, 695
+  size: 166, 451
+  orig: 166, 451
+  offset: 0, 0
+  index: -1
+02_arm_right_b
+  rotate: true
+  xy: 312, 409
+  size: 284, 479
+  orig: 284, 479
+  offset: 0, 0
+  index: -1
+02_body_b
+  rotate: true
+  xy: 2, 2
+  size: 405, 501
+  orig: 405, 501
+  offset: 0, 0
+  index: -1
+02_head_b
+  rotate: false
+  xy: 2, 411
+  size: 308, 294
+  orig: 308, 294
+  offset: 0, 0
+  index: -1
+02_leg_right_b
+  rotate: true
+  xy: 2, 707
+  size: 154, 338
+  orig: 154, 338
+  offset: 0, 0
+  index: -1
