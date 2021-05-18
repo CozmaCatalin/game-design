@@ -12,6 +12,7 @@ public class ShopManager : MonoBehaviour
     public static ShopManager Instance { get { return instance; } }
 
     public static bool[] unlocked = new bool[5];
+    public static bool[] unlockedMaps = new bool[2];
     public static int currentCoins = 1000;
     public static ShopWeapon selectedWeapon;
     public static ShopMap selectedMap;
@@ -49,9 +50,9 @@ public class ShopManager : MonoBehaviour
 
     void PlayBtn()
     {
-        if (selectedWeapon)
+        if (selectedWeapon && selectedMap)
         {
-            SceneManager.LoadScene(sceneName: "Map1");
+            SceneManager.LoadScene(sceneName: selectedMap.MapName);
         }
     }
 
