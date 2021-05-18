@@ -16,6 +16,7 @@ public class SwordManEnemyAI : MonoBehaviour
     public Transform feetPos;
     public float checkRadius;
     public LayerMask whatIsGround;
+    public float attackDistance;
     public bool isGrounded;
 
     void Start()
@@ -45,7 +46,7 @@ public class SwordManEnemyAI : MonoBehaviour
                 }
                 float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             
-                if (Mathf.Abs(distanceToPlayer - stoppingDistance) <= 1f)
+                if (Mathf.Abs(distanceToPlayer - stoppingDistance) <=attackDistance)
                 {
                     Animator.SetBool("isRunning", false);
                     if (!isAttacking)
