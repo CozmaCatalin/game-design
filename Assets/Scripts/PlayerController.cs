@@ -85,8 +85,10 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && isJumping == true)
         {
+            Debug.Log("Try to jump " + jumpTimeCounter);
             if (jumpTimeCounter > 0)
             {
+                Debug.Log("JUMPING!");
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
