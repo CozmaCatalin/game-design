@@ -37,7 +37,6 @@ public class GamePlay : MonoBehaviour
     {
         currentMonsters = 0;
         wave = 0;
-        maxWaves = 4;
         bossSpawned = false;
         isSpawning = false;
         playerSpawnPoint = 4;
