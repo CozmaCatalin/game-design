@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nearDistance = Random.Range(25, 50);
         stoppingDistance = Random.Range(25, 30);
-        startTimeBtwShots = Random.Range(5, 10);
+        startTimeBtwShots = Random.Range(2, 4);
         speed = Random.Range(5, 10);
         waitTimeToAttack = Random.Range(4, 6);
     }

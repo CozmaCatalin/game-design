@@ -134,7 +134,9 @@ public class GamePlay : MonoBehaviour
             wave += 1;
             currentWall += 1;
             waveNumber.text = "Wave " + wave;
-            monsterToSpawnPerWave = Random.Range(3, 5) * wave;
+        // DE AICI SETEZI DIFICULTATEA JOCULUI, ACUM ALEGE UN NUMAR INTRE 5 SI 10 RANDOM SI IL INMULTESTE CU NUMARUL WAVE-ULUI.
+        // EX: RAND(5,10) = 6 , WAVE=2 , SE SPAWNEAZA 6*2 MONSTRII
+            monsterToSpawnPerWave = Random.Range(5, 10) * wave;
             StartCoroutine(SpawnMonsters());
         
 
