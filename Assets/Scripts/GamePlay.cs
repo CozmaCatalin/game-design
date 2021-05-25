@@ -49,7 +49,7 @@ public class GamePlay : MonoBehaviour
     void Update()
     {
         GameManager();
-        if (roundDone)
+        if (roundDone && player.health > 0)
         {
             waveNumber.color = Color.green;
             waveNumber.text = "You win!";

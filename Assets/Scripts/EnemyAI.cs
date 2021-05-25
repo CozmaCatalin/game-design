@@ -35,16 +35,13 @@ public class EnemyAI : MonoBehaviour
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             if (Mathf.Abs(distanceToPlayer - stoppingDistance) <= 1f || Mathf.Abs(distanceToPlayer - nearDistance) <= 1f)
             {
-                //Debug.Log("[1]");
             }
             else if (distanceToPlayer > stoppingDistance)
             {
-                //Debug.Log("[2]");
                 transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
             }
             else if (distanceToPlayer < nearDistance)
             {
-                //Debug.Log("[3]");
                 transform.position = Vector2.MoveTowards(transform.position, player.position, -speed * Time.deltaTime);
             }
 

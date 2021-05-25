@@ -59,14 +59,27 @@ public class Boss : MonoBehaviour,IEnemy {
         healthBar.value = health;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    //private void OnTriggerEnter2D(Collider2D other)
+    //{
+    //    // deal the player damage !
+    //    Debug.Log("[OnTriggerEnter2D]Enemy hitted " + other.tag);
+    //    if (other.CompareTag("Player") && isDead == false) {
+    //        if (timeBtwDamage <= 0) {
+    //            other.GetComponent<PlayerController>().TakeDamage(damage);
+    //        }
+    //    } 
+    //}
+
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        // deal the player damage ! 
-        if (other.CompareTag("Player") && isDead == false) {
-            if (timeBtwDamage <= 0) {
-                other.GetComponent<PlayerController>().TakeDamage(damage);
+        if (collision.collider.CompareTag("Player") && isDead == false)
+        {
+            if (timeBtwDamage <= 0)
+            {
+                collision.collider.GetComponent<PlayerController>().TakeDamage(damage);
             }
-        } 
+        }
+
     }
 
 

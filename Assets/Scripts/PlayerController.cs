@@ -85,10 +85,8 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Space) && isJumping == true)
         {
-            Debug.Log("Try to jump " + jumpTimeCounter);
             if (jumpTimeCounter > 0)
             {
-                Debug.Log("JUMPING!");
                 rb.velocity = Vector2.up * jumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
@@ -132,7 +130,6 @@ public class PlayerController : MonoBehaviour
         camAnim.SetTrigger("shake");
         Instantiate(explosion, transform.position, Quaternion.identity);
         health -= defenseDamage;
-        Debug.Log("Enemy losed " + defenseDamage);
     }
 
     public void TakeHearth()
