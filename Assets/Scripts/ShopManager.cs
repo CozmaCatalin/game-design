@@ -23,6 +23,7 @@ public class ShopManager : MonoBehaviour
     public static int speedPrice = 10;
     public static int strengthPrice = 10;
     public static int healthPrice = 10;
+    public static int gameDifficulty = 3;
 
     public Text currentCoinsText;
     public Button[] buttons;
@@ -42,6 +43,8 @@ public class ShopManager : MonoBehaviour
 
     void Start()
     {
+        unlocked[0] = true;
+        unlockedMaps[0] = true;
         buttons[PLAY_BTN].onClick.AddListener(PlayBtn);
         coins = currentCoinsText;
         currentCoinsText.text = "Current coins: " + currentCoins;
@@ -60,5 +63,10 @@ public class ShopManager : MonoBehaviour
     {
         currentCoins -= value;
         coins.text = "Current coins: " + currentCoins;
+    }
+
+    public static void SetGameDifficulty(int difficulty)
+    {
+        gameDifficulty = difficulty;
     }
 }

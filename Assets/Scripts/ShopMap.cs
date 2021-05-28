@@ -42,6 +42,7 @@ public class ShopMap : MonoBehaviour
     {
         if(ShopManager.unlockedMaps[itemId] == true)
         {
+           
             lockIcon.SetActive(false);
             buttonText.text = "Select";
             coinImage.SetActive(false);
