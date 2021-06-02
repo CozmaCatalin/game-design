@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour {
     public Animator camAnim;
     private SpriteRenderer weaponSprite;
     public Slider coolDown;
+    public AudioSource fireAudio;
 
     private float timeBtwShots;
     public float startTimeBtwShots;
@@ -23,6 +24,7 @@ public class Weapon : MonoBehaviour {
         weaponSprite = GetComponent<SpriteRenderer>();
         coolDown = GameObject.FindGameObjectWithTag("CoolDownWeapon").GetComponent<Slider>();
         camAnim = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Animator>();
+        fireAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -45,9 +47,10 @@ public class Weapon : MonoBehaviour {
             if (Input.GetMouseButton(0))
             {
                 if(coolDown.GetComponent<CoolDownBar>().isCooling == false){
+                    fireAudio.Play();
                     coolDown.value -= coolDownTake;
                     Instantiate(shotEffect, shotPoint.position, Quaternion.identity);
-                    camAnim.SetTrigger("shake");
+                    //camAnim.SetTrigger("shake");
                     Instantiate(projectile, shotPoint.position, transform.rotation);
                     timeBtwShots = startTimeBtwShots;
                 } else

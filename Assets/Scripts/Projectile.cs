@@ -11,7 +11,6 @@ public class Projectile : MonoBehaviour {
     public int damage;
     public LayerMask whatIsSolid;
     public string tagFinded;
-
     public GameObject destroyEffect;
 
     private void Start()
@@ -42,6 +41,7 @@ public class Projectile : MonoBehaviour {
         {
             Instantiate(destroyEffect, transform.position, Quaternion.identity);
         }
+       
         Destroy(gameObject);
     }
 }

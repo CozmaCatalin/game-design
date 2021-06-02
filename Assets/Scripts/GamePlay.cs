@@ -31,10 +31,12 @@ public class GamePlay : MonoBehaviour
     public bool bossSpawned;
     public bool losed = false;
     public bool roundDone = false;
+    private AudioSource backgroundMusic;
 
 
     void Start()
     {
+        Debug.Log("enter!");
         currentMonsters = 0;
         wave = 0;
         bossSpawned = false;
@@ -43,6 +45,8 @@ public class GamePlay : MonoBehaviour
         SpawnPlayer();
         currentWall = -1;
         MenuBackButton.onClick.AddListener(GoToMenu);
+        backgroundMusic = GetComponent<AudioSource>();
+        backgroundMusic.Play();
         EnterWave();
     }
 

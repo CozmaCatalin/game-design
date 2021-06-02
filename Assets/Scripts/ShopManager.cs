@@ -13,7 +13,7 @@ public class ShopManager : MonoBehaviour
 
     public static bool[] unlocked = new bool[5];
     public static bool[] unlockedMaps = new bool[2];
-    public static int currentCoins = 1000;
+    public static int currentCoins = 1500;
     public static ShopWeapon selectedWeapon;
     public static ShopMap selectedMap;
     public static Text coins;
@@ -24,6 +24,7 @@ public class ShopManager : MonoBehaviour
     public static int strengthPrice = 10;
     public static int healthPrice = 10;
     public static int gameDifficulty = 3;
+    private AudioSource menuMusic;
 
     public Text currentCoinsText;
     public Button[] buttons;
@@ -48,6 +49,8 @@ public class ShopManager : MonoBehaviour
         buttons[PLAY_BTN].onClick.AddListener(PlayBtn);
         coins = currentCoinsText;
         currentCoinsText.text = "Current coins: " + currentCoins;
+        menuMusic = GetComponent<AudioSource>();
+        menuMusic.Play();
     }
 
 
